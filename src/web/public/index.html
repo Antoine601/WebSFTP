@@ -2435,14 +2435,14 @@
                             )}
                         </div>
                     ) : (
-                        <div className="space-y-6">
+                        <div className="space-y-3">
                             {mysqlDbs.length > 0 && (
                                 <div>
-                                    <h2 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                                        <Icon name="database" size={20} className="text-blue-600" />
+                                    <h2 className="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-1.5">
+                                        <Icon name="database" size={16} className="text-blue-600" />
                                         MySQL ({mysqlDbs.length})
                                     </h2>
-                                    <div className="grid gap-4">
+                                    <div className="grid gap-2">
                                         {mysqlDbs.map(db => (
                                             <DatabaseCard 
                                                 key={db.id} 
@@ -2462,11 +2462,11 @@
 
                             {mongoDbs.length > 0 && (
                                 <div>
-                                    <h2 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                                        <Icon name="database" size={20} className="text-green-600" />
+                                    <h2 className="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-1.5">
+                                        <Icon name="database" size={16} className="text-green-600" />
                                         MongoDB ({mongoDbs.length})
                                     </h2>
-                                    <div className="grid gap-4">
+                                    <div className="grid gap-2">
                                         {mongoDbs.map(db => (
                                             <DatabaseCard 
                                                 key={db.id} 
@@ -3246,99 +3246,83 @@
             }
 
             return (
-                <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-300 hover:shadow-lg transition-all duration-200">
-                    <div className="flex items-start justify-between mb-5">
-                        <div className="flex items-center gap-4">
-                            <div className={`w-14 h-14 ${database.type === 'mysql' ? 'bg-gradient-to-br from-blue-50 to-blue-100' : 'bg-gradient-to-br from-green-50 to-green-100'} rounded-xl flex items-center justify-center shadow-sm`}>
-                                <Icon name={typeIcon} size={26} className={database.type === 'mysql' ? 'text-blue-600' : 'text-green-600'} />
+                <div className="bg-white border border-gray-200 rounded-lg p-3 hover:border-primary-300 hover:shadow-md transition-all duration-200">
+                    <div className="flex items-start justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                            <div className={`w-8 h-8 ${database.type === 'mysql' ? 'bg-gradient-to-br from-blue-50 to-blue-100' : 'bg-gradient-to-br from-green-50 to-green-100'} rounded-lg flex items-center justify-center`}>
+                                <Icon name={typeIcon} size={16} className={database.type === 'mysql' ? 'text-blue-600' : 'text-green-600'} />
                             </div>
                             <div>
-                                <div className="flex items-center gap-2 mb-1">
-                                    <h3 className="font-bold text-gray-900 text-xl">{database.name}</h3>
+                                <div className="flex items-center gap-1.5">
+                                    <h3 className="font-semibold text-gray-900 text-sm">{database.name}</h3>
                                     {connectionStatus !== null && (
-                                        <span className={`w-2 h-2 rounded-full ${connectionStatus ? 'bg-green-500' : 'bg-red-500'}`} title={connectionStatus ? 'Connecté' : 'Déconnecté'}></span>
+                                        <span className={`w-1.5 h-1.5 rounded-full ${connectionStatus ? 'bg-green-500' : 'bg-red-500'}`} title={connectionStatus ? 'Connecté' : 'Déconnecté'}></span>
                                     )}
                                 </div>
-                                <div className="flex items-center gap-2 flex-wrap">
-                                    <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${database.type === 'mysql' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
+                                <div className="flex items-center gap-1.5 mt-0.5">
+                                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${database.type === 'mysql' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
                                         {database.type.toUpperCase()}
                                     </span>
                                     {database.projectName && (
-                                        <span className="text-xs px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 font-medium flex items-center gap-1">
-                                            <Icon name="folder" size={12} />
+                                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-medium flex items-center gap-0.5">
+                                            <Icon name="folder" size={10} />
                                             {database.projectName}
                                         </span>
                                     )}
+                                    <span className="text-[10px] text-gray-500">
+                                        {database.host}:{database.port}
+                                    </span>
                                 </div>
                             </div>
                         </div>
                         {isAdmin && (
-                            <div className="flex gap-1">
-                                <button onClick={onEdit} className="p-2 rounded-lg hover:bg-blue-50 text-gray-600 hover:text-blue-600 transition-colors" title="Modifier">
-                                    <Icon name="settings" size={18} />
+                            <div className="flex gap-0.5">
+                                <button onClick={onEdit} className="p-1.5 rounded hover:bg-blue-50 text-gray-600 hover:text-blue-600 transition-colors" title="Modifier">
+                                    <Icon name="settings" size={14} />
                                 </button>
-                                <button onClick={onDelete} className="p-2 rounded-lg hover:bg-red-50 text-gray-600 hover:text-red-600 transition-colors" title="Supprimer">
-                                    <Icon name="trash-2" size={18} />
+                                <button onClick={onDelete} className="p-1.5 rounded hover:bg-red-50 text-gray-600 hover:text-red-600 transition-colors" title="Supprimer">
+                                    <Icon name="trash-2" size={14} />
                                 </button>
                             </div>
                         )}
                     </div>
 
-                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                        <div className="grid grid-cols-2 gap-4 text-sm">
-                            <div className="flex items-center gap-2">
-                                <Icon name="server" size={14} className="text-gray-400" />
-                                <div>
-                                    <span className="text-gray-500 text-xs block">Serveur</span>
-                                    <span className="text-gray-900 font-semibold">{database.host}:{database.port}</span>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Icon name="user" size={14} className="text-gray-400" />
-                                <div>
-                                    <span className="text-gray-500 text-xs block">Utilisateur</span>
-                                    <span className="text-gray-900 font-semibold">{database.username || 'Non défini'}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 mt-2">
                         <button 
                             onClick={() => onNavigate('database-editor', database.id)} 
-                            className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all"
+                            className="flex-1 min-w-[100px] flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white text-xs font-semibold shadow-sm hover:shadow-md transition-all"
                         >
-                            <Icon name="terminal" size={16} />
-                            Ouvrir l'éditeur
+                            <Icon name="terminal" size={13} />
+                            Éditeur
                         </button>
                         
                         <button 
                             onClick={handleTestConnection}
                             disabled={testingConnection}
-                            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white border-2 border-gray-200 hover:border-primary-300 hover:bg-primary-50 text-gray-700 hover:text-primary-700 text-sm font-medium transition-all disabled:opacity-50"
+                            className="flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 hover:border-primary-300 hover:bg-primary-50 text-gray-700 hover:text-primary-700 text-xs font-medium transition-all disabled:opacity-50"
                             title="Tester la connexion"
                         >
                             {testingConnection ? (
-                                <Icon name="loader-2" size={16} className="animate-spin" />
+                                <Icon name="loader-2" size={13} className="animate-spin" />
                             ) : (
-                                <Icon name="activity" size={16} />
+                                <Icon name="activity" size={13} />
                             )}
                         </button>
 
                         <button 
                             onClick={handleGetConnectionString} 
-                            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white border-2 border-gray-200 hover:border-primary-300 hover:bg-primary-50 text-gray-700 hover:text-primary-700 text-sm font-medium transition-all"
+                            className="flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 hover:border-primary-300 hover:bg-primary-50 text-gray-700 hover:text-primary-700 text-xs font-medium transition-all"
                             title="Chaîne de connexion"
                         >
-                            <Icon name="link" size={16} />
+                            <Icon name="link" size={13} />
                         </button>
 
                         {isAdmin && !database.projectName && (
                             <select 
                                 onChange={(e) => e.target.value && handleAssignProject(e.target.value)}
-                                className="px-4 py-2.5 rounded-lg bg-white border-2 border-gray-200 hover:border-primary-300 text-gray-700 text-sm font-medium cursor-pointer transition-all focus:outline-none focus:border-primary-500"
+                                className="px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 hover:border-primary-300 text-gray-700 text-xs font-medium cursor-pointer transition-all focus:outline-none focus:border-primary-500"
                             >
-                                <option value="">📁 Assigner au projet</option>
+                                <option value="">📁 Projet</option>
                                 {projects.map(p => (
                                     <option key={p.name} value={p.name}>{p.name}</option>
                                 ))}
@@ -3348,11 +3332,10 @@
                         {isAdmin && database.projectName && (
                             <button 
                                 onClick={handleUnassign} 
-                                className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-red-50 border-2 border-red-200 hover:bg-red-100 hover:border-red-300 text-red-700 text-sm font-medium transition-all"
+                                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-red-50 border border-red-200 hover:bg-red-100 hover:border-red-300 text-red-700 text-xs font-medium transition-all"
                                 title="Retirer l'assignation"
                             >
-                                <Icon name="x-circle" size={16} />
-                                Retirer
+                                <Icon name="x-circle" size={13} />
                             </button>
                         )}
                     </div>
