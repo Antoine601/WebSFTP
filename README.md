@@ -301,5 +301,4 @@ Pour signaler un bug ou demander une fonctionnalité, ouvrez une issue sur [GitH
 - [ ] Support d'autres distributions Linux
 - [ ] Interface mobile responsive améliorée
 - [ ] Backup automatique des bases de données
-#   W e b S F T P  
- 
+#
